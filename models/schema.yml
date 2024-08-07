@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: "gz_raw_data"
+    description: greenweez raw data source
+    tables:
+        - name: sales
+          identifier: raw_gz_sales
+          description: sales of greenweez / we have one row per products_id found in each orders_id.
+          columns:
+            - name: date_date
+              description: the date of pruchase
+            - name: orders_id
+              description: identifies the purchase
+            - name: pdt_id
+              description: number that identify the product in the purchase.
+            - name: revenue
+              description: amount of money from the pruchase.
+            - name: quantity
+              description: number of items in the purchase. 
+          tests:
+              - unique:
+                  column_name: "(pdt_id || '_' || orders_id)"   
+        - name: product
+          identifier: raw_gz_product
+          description: products of greeweez / we have products_id in each row with their respective price.
+          columns:
+            - name: products_id
+              description: is the primary key of the table - number that identify the product in the purchase.
+              tests: 
+                - not_null                
+            - name: purchse_price
+              description: cost of the products
+        - name: ship   
+          identifier: raw_gz_ship
+          columns:
+            - name: orders_id
+              description: is the primary key - identifies the purchase
+              tests: 
+                - not_null  
+            - name: shipping_fee
+              description: fee of the shipping
+            - name: logcost
+              description: logisticts cost
+            - name: shipping_cost
+              description: cost of shipping
