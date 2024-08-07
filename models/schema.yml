@@ -13,15 +13,15 @@ sources:
               description: the date of pruchase
             - name: orders_id
               description: identifies the purchase
-            - name: products_id
+            - name: pdt_id
               description: number that identify the product in the purchase.
             - name: revenue
               description: amount of money from the pruchase.
             - name: quantity
               description: number of items in the purchase. 
-              tests:
-                  - unique:
-                      column_name: "(product_id || '_' || orders_id)"   
+          tests:
+              - unique:
+                  column_name: "(pdt_id || '_' || orders_id)"   
         - name: product
           identifier: raw_gz_product
           description: products of greeweez / we have products_id in each row with their respective price.
