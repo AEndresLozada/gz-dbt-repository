@@ -9,4 +9,4 @@ SELECT
     round(s.revenue -round(s.quantity*cast(p.purchase_price as FLOAT64),2),2) as margin
 from {{ref("stg_raw__sales")}} s
 left join {{ref("stg_raw__product")}} p 
-    using (products_id)
+    using (products_id) 

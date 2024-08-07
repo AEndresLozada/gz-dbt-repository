@@ -30,7 +30,7 @@ sources:
               description: is the primary key of the table - number that identify the product in the purchase.
               tests: 
                 - not_null                
-            - name: purchase_price
+            - name: purchse_price
               description: cost of the products
         - name: ship   
           identifier: raw_gz_ship
@@ -43,5 +43,5 @@ sources:
               description: fee of the shipping
             - name: logcost
               description: logisticts cost
-            - name: shiiping_cost
+            - name: shipping_cost
               description: cost of shipping
